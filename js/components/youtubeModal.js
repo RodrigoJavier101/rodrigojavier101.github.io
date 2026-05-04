@@ -1,3 +1,4 @@
+// youtubeModal.js
 import { extractVideoId } from "../utils/youtube.js";
 
 export function initYouTubeModal() {
@@ -26,9 +27,14 @@ export function initYouTubeModal() {
   }
 
   document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("youtube-btn") ||
-        e.target.classList.contains("youtube-btn-small")) {
+    if (
+      e.target.classList.contains("youtube-btn") ||
+      e.target.classList.contains("youtube-btn-small")
+    ) {
       const url = e.target.getAttribute("data-youtube-url");
+
+      console.log(url, "nter");
+
       const id = extractVideoId(url);
       if (id) openYouTubeModal(id);
       else console.error("URL de YouTube inválida:", url);

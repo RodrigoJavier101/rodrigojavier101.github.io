@@ -8,7 +8,11 @@ export const blogPosts = {
   "1": {
     // Language-independent fields (same for all langs)
     id: "1",
-    youtubeUrl: "", // "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+    youtubeUrl: {
+      en: "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+      es: "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+      il: "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+    },
     
     // Translatable fields: key-first format
     title: {
@@ -63,7 +67,6 @@ export function getBlogPost(postId, lang = DEFAULT_LANG) {
   const post = blogPosts[postId];
   if (!post) return null;
 
-  // Fallback chain: requested lang → default lang → first available
   const resolve = (field) => {
     const translations = post[field];
     return translations?.[lang] ?? translations?.[DEFAULT_LANG] ?? Object.values(translations)?.[0] ?? "";
@@ -71,7 +74,8 @@ export function getBlogPost(postId, lang = DEFAULT_LANG) {
 
   return {
     id: post.id,
-    youtubeUrl: post.youtubeUrl,
+    // ✅ FIX: Use resolve() for youtubeUrl too
+    youtubeUrl: resolve("youtubeUrl"), 
     title: resolve("title"),
     content: resolve("content"),
     date: typeof post.getDate === "function" ? post.getDate(lang) : "",
