@@ -33,8 +33,8 @@ export const blog = (lang) => {
             <strong>
               <time datetime="${post.date}">${post.date}</time> <!-- ✅ post.date is formatted for lang -->
             </strong> 
-          <!--    -->
-          ${youtubeBtn}
+          <!-- ${youtubeBtn}   -->
+          
           </span>
         </article>
       `;
