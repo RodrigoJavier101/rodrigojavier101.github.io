@@ -9,9 +9,9 @@ export const blogPosts = {
     // Language-independent fields (same for all langs)
     id: "1",
     youtubeUrl: {
-      en: "https://www.youtube.com/watch?v=jNQXAC9IVRw",
-      es: "https://www.youtube.com/watch?v=jNQXAC9IVRw",
-      il: "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+      en: "",//"https://www.youtube.com/watch?v=jNQXAC9IVRw",
+      es: "",//"https://www.youtube.com/watch?v=jNQXAC9IVRw",
+      il: "",//"https://www.youtube.com/watch?v=jNQXAC9IVRw",
     },
     
     // Translatable fields: key-first format
