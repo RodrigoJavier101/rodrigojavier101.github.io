@@ -27,14 +27,14 @@ export const blog = (lang) => {
       return `
         <article class="blog-post-preview">
           <h3>
-            <a href="#blog/${post.id}">${post.title}</a> <!-- ✅ post.title is now a resolved string -->
+            <a href="#blog/${post.id}">${post.id} - ${post.title}</a> <!-- ✅ post.title is now a resolved string -->
           </h3>
           <span class="post-meta">
             <strong>
-              <time datetime="${post.date}">${post.date}</time> <!-- ✅ post.date is formatted for lang -->
+              <time datetime="${post.date}">${post.date}</time> 
+              <!-- ✅ post.date is formatted for lang -->
             </strong> 
-          <!-- ${youtubeBtn}   -->
-          
+            <!-- ${youtubeBtn}   -->
           </span>
         </article>
       `;

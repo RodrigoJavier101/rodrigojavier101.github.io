@@ -29,9 +29,12 @@ export const blogPost = (postId, lang) => {
 
   return `
     <div class="page container">
+      <footer>
+          <a href="#blog">← ${t("nav_blog", lang)}</a>
+      </footer>
       <article class="blog-post-full">
         <header>
-          <h1>${post.title}</h1>
+          <h1>${post.id} - ${post.title}</h1>
           <time datetime="${post.date}" class="post-date">${post.date}</time>
           ${youtubeBtn}
         </header>

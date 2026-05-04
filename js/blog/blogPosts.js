@@ -5,22 +5,22 @@ import { DEFAULT_LANG, SUPPORTED_LANGS } from "../translations/translations.js";
 
 // 🔑 Translatable fields follow key-first pattern
 export const blogPosts = {
-  "1": {
+  1: {
     // Language-independent fields (same for all langs)
-    id: "1",
+    id: 1,
     youtubeUrl: {
-      en: "",//"https://www.youtube.com/watch?v=jNQXAC9IVRw",
-      es: "",//"https://www.youtube.com/watch?v=jNQXAC9IVRw",
-      il: "",//"https://www.youtube.com/watch?v=jNQXAC9IVRw",
+      en: "", //"https://www.youtube.com/watch?v=jNQXAC9IVRw",
+      es: "", //"https://www.youtube.com/watch?v=jNQXAC9IVRw",
+      il: "", //"https://www.youtube.com/watch?v=jNQXAC9IVRw",
     },
-    
+
     // Translatable fields: key-first format
     title: {
       en: "The welcome and the intended theme of the YouTube channel.",
       es: "Bienvenida y la pretendida temática del canal de YouTube.",
       il: "ברוכים הבאים והנושא המיועד של ערוץ היוטיוב.", // 👈 Placeholder - review with native speaker
     },
-    
+
     content: {
       en: `
         <p><strong>Docendo Discitur</strong>, from the Latin "by teaching, one learns." </p>
@@ -59,8 +59,8 @@ export const blogPosts = {
 
 /**
  * Helper: Get a blog post with translations resolved for a specific language
- * @param {string} postId 
- * @param {string} lang 
+ * @param {string} postId
+ * @param {string} lang
  * @returns {Object|null}
  */
 export function getBlogPost(postId, lang = DEFAULT_LANG) {
@@ -69,13 +69,18 @@ export function getBlogPost(postId, lang = DEFAULT_LANG) {
 
   const resolve = (field) => {
     const translations = post[field];
-    return translations?.[lang] ?? translations?.[DEFAULT_LANG] ?? Object.values(translations)?.[0] ?? "";
+    return (
+      translations?.[lang] ??
+      translations?.[DEFAULT_LANG] ??
+      Object.values(translations)?.[0] ??
+      ""
+    );
   };
 
   return {
     id: post.id,
     // ✅ FIX: Use resolve() for youtubeUrl too
-    youtubeUrl: resolve("youtubeUrl"), 
+    youtubeUrl: resolve("youtubeUrl"),
     title: resolve("title"),
     content: resolve("content"),
     date: typeof post.getDate === "function" ? post.getDate(lang) : "",
@@ -84,11 +89,11 @@ export function getBlogPost(postId, lang = DEFAULT_LANG) {
 
 /**
  * Helper: Get all blog posts for a specific language
- * @param {string} lang 
+ * @param {string} lang
  * @returns {Array<Object>}
  */
 export function getAllBlogPosts(lang = DEFAULT_LANG) {
   return Object.keys(blogPosts)
-    .map(id => getBlogPost(id, lang))
-    .filter(post => post !== null);
+    .map((id) => getBlogPost(id, lang))
+    .filter((post) => post !== null);
 }
