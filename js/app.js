@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
         */
 
-        if (ip != "190.12.168.203") {
+        if (ip != "190.12.168.203" || ip != "190.12.168.239") {
           await addDoc(collection(db, "visits"), {
             ip,
             timestamp: new Date().toISOString(),
